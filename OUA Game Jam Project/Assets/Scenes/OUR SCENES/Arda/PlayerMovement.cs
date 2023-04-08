@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Hedef þeride ulaþana kadar karakterin yavaþça hareket etmesini saðlayan kod
         float x = (targetLane - currentLane) * laneDistance;
-        Vector3 targetPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z+z);
+        Vector3 targetPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z);
         StartCoroutine(MoveToLane(targetPosition));
 
         currentLane = targetLane;
