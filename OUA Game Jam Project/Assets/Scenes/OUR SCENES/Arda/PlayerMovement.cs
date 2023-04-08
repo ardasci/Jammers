@@ -6,18 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // Karakterin hýzý
     public float horizontalSpeed;
+    public float verticalSpeed;
+
 
     private Rigidbody rb;
     private Animator animator;
     public Vector3 playerpos;
-    public float laneDistance = 2.0f; // Her þerit arasýndaki mesafe
-    public float laneSpeed = 10.0f; // Þerit deðiþtirme hýzý
-    public int currentLane = 1; // Karakterin baþlangýçta hangi þeritte olduðunu belirleyen deðiþken
-
+   
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+      
+
     }
 
     void FixedUpdate()
@@ -28,66 +29,64 @@ public class PlayerMovement : MonoBehaviour
         // Hareket hýzýný Animator'a gönder
         float movementSpeed = rb.velocity.magnitude;
         animator.SetFloat("Speed", movementSpeed);
+        
+        //transform.position += new Vector3(horizontalSpeed * Time.fixedDeltaTime, 0, 0);
+       transform.right += new Vector3(horizontalSpeed * Time.fixedDeltaTime, 0, 0);
+
+
     }
-    public void SwitchLane(int direction)
+
+    private void OnTriggerStay(Collider other)
     {
-        int targetLane = currentLane + direction;
-
-        // Þerit sýnýrýna ulaþýldýðýnda karakterin daha fazla hareket etmesini engelleyen koþullar
-        if (targetLane < 0 || targetLane > 2)
+        if (other.CompareTag("TurningPoint"))
         {
-            return;
-        }
+            if (horizontalSpeed>0)
+            {
+                Debug.Log("sað");
+                Debug.Log(Input.GetAxisRaw("Horizontal"));
+                rb.MoveRotation(Quaternion.Euler(transform.rotation.eulerAngles.x, 90f, transform.rotation.eulerAngles.z));
+            }
+            if (horizontalSpeed < 0)
+            {
+                Debug.Log("sol");
+                Debug.Log(Input.GetAxisRaw("Horizontal"));
+                //rb.MoveRotation(Quaternion.Euler(transform.rotation.eulerAngles.x, -90f, transform.rotation.eulerAngles.z));
+                transform.rotation = (Quaternion.Euler(transform.rotation.eulerAngles.x, -90f, transform.rotation.eulerAngles.z));
+            }
 
-        // Hedef þeride ulaþana kadar karakterin yavaþça hareket etmesini saðlayan kod
-        float x = (targetLane - currentLane) * laneDistance;
-        Vector3 targetPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z);
-        StartCoroutine(MoveToLane(targetPosition));
-
-        currentLane = targetLane;
-    }
-    // Þerit deðiþtirme animasyonunu oynatan fonksiyon
-    IEnumerator MoveToLane(Vector3 targetPosition)
-    {
-        while (transform.position != targetPosition)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, laneSpeed * Time.deltaTime);
-            yield return null;
+            //Vector3 newPosition = transform.position + transform.forward * speed * Time.deltaTime + new Vector3(horizontalSpeed * Time.deltaTime, 0, 0);
+            //rb.MovePosition(newPosition);
         }
     }
-
+   
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SwitchLane(-1);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            SwitchLane(1);
-        }
+        horizontalSpeed = Input.GetAxisRaw("Horizontal") * speed;
+        //transform.Rotate(0, Input.GetAxis("Horizontal") * 180 * Time.deltaTime, 0);
+        //KeyboardControl();
         // Sol ve saða hareket
-
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //transform.position += new Vector3(horizontalInput, 0, 0) * speed * Time.deltaTime;
         //float horizontalInput = Input.GetAxis("Horizontal");
         //if (Input.GetKeyDown(KeyCode.A))
         //{
-        //    horizontalSpeed = -5;
 
-        //    transform.position = Vector3.Lerp(transform.position, new Vector3(59, transform.position.y, transform.position.z), 0.4f);
+
+        //    transform.position += new Vector3(horizontalInput, 0,0)*Time.deltaTime*speed;
         //}
 
         //else if (Input.GetKeyDown(KeyCode.D))
         //{
         //    horizontalSpeed = 5;
-        //    transform.position = Vector3.Lerp(transform.position, new Vector3(61, transform.position.y, transform.position.z), 0.4f);
+        //   transform.position += new Vector3(horizontalInput, 0,0)*Time.deltaTime*speed;
         //}
 
 
         // Hareket yönüne göre karakterin yüzünü çevir
-        if (rb.velocity.magnitude > 0)
-        {
-            transform.rotation = Quaternion.LookRotation(rb.velocity);
-        }
+        //if (rb.velocity.magnitude > 0)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(rb.velocity);
+        //}
 
         // Idle animasyonunu kontrol et
         if (rb.velocity.magnitude == 0)
@@ -99,4 +98,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
     }
-}
+    void KeyboardControl()
+    {
+        rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed, rb.velocity.y, rb.velocity.z);
+       
+    }
+ }
