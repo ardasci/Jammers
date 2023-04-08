@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EntryScene.unity
+    path: Assets/Scenes/OUR SCENES/Emircan/EntryScene.unity
     guid: 2deafda1754e0de4481ec36f57c211d0
   - enabled: 1
     path: Assets/Scenes/SelinayScene.unity
