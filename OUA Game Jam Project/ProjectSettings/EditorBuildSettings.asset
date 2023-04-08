@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/EntryScene.unity
     guid: 2deafda1754e0de4481ec36f57c211d0
   - enabled: 1
-    path: Assets/Scenes/SCHOOL_SCENE.unity
+    path: Assets/Scenes/SelinayScene.unity
     guid: 10358d7a405e20748822b82bd00ce7af
   m_configObjects: {}
