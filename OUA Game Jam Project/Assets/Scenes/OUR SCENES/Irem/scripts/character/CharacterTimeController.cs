@@ -1,9 +1,11 @@
 using Time;
 using Collectables;
+using Obstacles;
 using UnityEngine;
 
 namespace Character
 {
+    // Character time and obstacle controller :)
     public class CharacterTimeController : MonoBehaviour
     {
         private Timer _timer;
@@ -21,6 +23,12 @@ namespace Character
             {
                 _timer.SandGlassImgScaler();
                 _timer.CountdownIncreaser();
+            }
+
+            if (other.GetComponent<ObstacleController>())
+            {
+                // set fall anim
+                // gameover
             }
         }
 
