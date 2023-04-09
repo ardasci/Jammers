@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Suprise
+  - GroceryCart
+  - FixedUpdate
+  - Update
+  - Collectable
   layers:
   - Default
   - TransparentFX

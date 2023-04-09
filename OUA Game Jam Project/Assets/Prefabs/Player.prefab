@@ -933,6 +933,37 @@ Transform:
   m_Father: {fileID: 8330863268950111571}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3443775612300173274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759263342069189123}
+  m_Layer: 0
+  m_Name: Stash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759263342069189123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443775612300173274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.054, z: -0.088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7257616121846002364}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3483010110557467552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2144,8 @@ GameObject:
   - component: {fileID: 3627675602774566969}
   - component: {fileID: 7201993928751689627}
   - component: {fileID: 4313739550403834387}
+  - component: {fileID: 5169036262929074968}
+  - component: {fileID: 4732332981079496190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2135,6 +2168,7 @@ Transform:
   - {fileID: 6032088999992020068}
   - {fileID: 2947722116474671656}
   - {fileID: 4313739551052439823}
+  - {fileID: 1759263342069189123}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -2228,6 +2262,34 @@ MonoBehaviour:
   speed: 5
   rotationSpeed: 20
   rotationObject: {fileID: 0}
+--- !u!114 &5169036262929074968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067050591315503110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321b69bad79378c4da707cb15185cc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stashParent: {fileID: 1759263342069189123}
+  CollectedObjects: []
+  collectionHeight: 1
+  maxCollectableCount: 5
+--- !u!114 &4732332981079496190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067050591315503110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8da5d86d5c9ff4a94831548a83113f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8189781987490882234
 GameObject:
   m_ObjectHideFlags: 0
