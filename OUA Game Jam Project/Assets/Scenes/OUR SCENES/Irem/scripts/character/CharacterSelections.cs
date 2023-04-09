@@ -8,7 +8,6 @@ namespace Character
         // tags for unity level selection objects (update and fixedUpdate)
         private const string _update = "Update", _fixedUpdate = "FixedUpdate";
         private const string _groceryCart = "GroceryCart", _suprise = "Suprise";
-        //private const string _groceryCart = "GroceryCart", _suprise = "Suprise";
 
         private void OnTriggerEnter(Collider other)
         {
