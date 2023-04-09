@@ -43,7 +43,7 @@ void Start()
 void Update() 
 {
     //-- calculate time
-    msecs += Time.deltaTime * clockSpeed;
+    msecs += UnityEngine.Time.deltaTime * clockSpeed;
     if(msecs >= 1.0f)
     {
         msecs -= 1.0f;

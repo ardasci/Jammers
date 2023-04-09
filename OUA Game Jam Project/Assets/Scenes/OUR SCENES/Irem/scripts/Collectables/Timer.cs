@@ -2,7 +2,7 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Collectables
+namespace Time
 {
     public class Timer : MonoBehaviour
     {
@@ -11,45 +11,33 @@ namespace Collectables
         [SerializeField] private float _speed = .1f, _height = .5f;
         [SerializeField] private bool isGameStarted;
 
-        private Vector3 _pos;
-
         public float countdown = 30f;
-        private float _newY;
         private int countdownNumber;
 
         private void Start()
         {
             isGameStarted = true;
-            _pos = transform.position;
         }
 
         private void Update()
         {
-            ClockYoyoMovement();
             SandGlassImgRotator();
             CountdownCalculator();
         }
 
-        private void ClockYoyoMovement()
-        {
-            _newY = (Mathf.Sin(Time.time * _speed) * _height + _pos.y) / 2;
-            transform.position = new Vector3(_pos.x, _newY, _pos.z);
-        }
-
         private void SandGlassImgRotator()
         {
-            sandGlass.DOLocalRotate(new Vector3(0, 360, 0), 2f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
+            sandGlass.DOLocalRotate(new Vector3(0, 0, 360), 2f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
         }
 
         private void CountdownCalculator()
         {
             if (isGameStarted)
             {
-                countdown -= Time.deltaTime;
+                countdown -= UnityEngine.Time.deltaTime;
 
                 if (countdown <= 5)
                 {
-                    //timeText.color = Color.red;
                     TextColorUpdater(timeText, Color.red);
                 }
 
@@ -67,16 +55,24 @@ namespace Collectables
         {
             TextColorUpdater(timeText, Color.green);
             countdown += 5f;
+            //timeText.gameObject.transform.DOScale(Vector3.one * 1.5f, 1f).SetLoops(2, LoopType.Yoyo);
         }
 
         private void TextColorUpdater(TextMeshProUGUI _text, Color _color)
         {
-            _text.color = _color;
+            _text.DOColor(_color, 1f);
         }
 
         public void SetDefaultTextColor()
         {
-            timeText.color = Color.white;
+            timeText.DOColor(Color.white, 1f);
+        }
+
+        public void DestroyClock(Transform trans, GameObject gameObj)
+        {
+            trans.DOScale(0f, .3f).SetEase(Ease.InOutBack).OnComplete(() =>
+                Destroy(gameObj)
+                );
         }
     }
 }

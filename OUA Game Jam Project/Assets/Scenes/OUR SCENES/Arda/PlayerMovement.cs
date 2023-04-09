@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = transform.forward * speed;
 
         float horizontalInput = joystick.Horizontal * speed; // yatay inputu al
-        float rotation = horizontalInput * rotationSpeed * Time.deltaTime; // rotasyon açýsýný hesapla
+        float rotation = horizontalInput * rotationSpeed * UnityEngine.Time.deltaTime; // rotasyon açýsýný hesapla
         rotationObject.Rotate(0f, rotation / 1.25f, 0f); // rotationObject'in rotasyonunu güncelle
 
         if (speed > 0)
