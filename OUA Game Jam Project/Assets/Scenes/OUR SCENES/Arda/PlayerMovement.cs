@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; // hareket hýzý
+    public float speed = 8f; // hareket hýzý
     public float rotationSpeed = 100f; // rotasyon hýzý
     public Transform rotationObject; // rotation object
     private Rigidbody rb;
@@ -20,15 +20,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.forward * speed;
+        
     }
 
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal"); // yatay inputu al
-
+        rb.velocity = transform.forward * speed;
         float rotation = horizontalInput * rotationSpeed * Time.deltaTime; // rotasyon açýsýný hesapla
-        rotationObject.Rotate(0f, rotation, 0f); // rotationObject'in rotasyonunu güncelle
+        rotationObject.Rotate(0f, rotation/1.25f, 0f); // rotationObject'in rotasyonunu güncelle
 
         if (speed > 0)
         {

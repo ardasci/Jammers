@@ -4,55 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //public float DistanceToPlayer;
-    //public float baseDistanceToPlayer;
+    public Transform target; // hedef transformu
+    public float smoothTime = 0.3f; // kamera hareketinin yumuþaklýðý
+    private Vector3 velocity = Vector3.zero;
 
-    //public Transform TargetTransform;
+    private void LateUpdate()
+    {
+        Vector3 targetPosition = target.position; // hedefin pozisyonunu al
 
-    //public float speed;
-    //void Start()
-    //{
-    //    baseDistanceToPlayer = Vector3.Distance(transform.position, TargetTransform.position);
+        // kamera pozisyonunu hedefe göre ayarla
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 
-    //}
+        // hedefe bakacak rotasyonu hesapla
+        Vector3 lookDirection = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
 
-    //// Update is called once per frame
-    //void LateUpdate()
-    //{
-
-    //    if (managerContChar.IsMoving)
-    //    {
-    //        transform.position = Vector3.Lerp(transform.position, CalculatePos(), 0.03f);
-    //    }
-
-    //    else
-    //    {
-    //        transform.position = Vector3.Lerp(transform.position, InitPos(), 0.03f);
-    //    }
-
-
-    //}
-
-
-    //private Vector3 CalculatePos()
-    //{
-    //    var pos = transform.position;
-
-    //    var direction = transform.forward * -1;
-
-    //    pos = TargetTransform.position + direction.normalized * DistanceToPlayer;
-
-    //    return pos;
-    //}
-
-    //private Vector3 InitPos()
-    //{
-    //    var pos = transform.position;
-
-    //    var direction = transform.forward * -1;
-
-    //    pos = TargetTransform.position + direction.normalized * baseDistanceToPlayer;
-
-    //    return pos;
-    //}
+        // kamera rotasyonunu yumuþak bir þekilde ayarla
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, smoothTime);
+    }
+    private void Update()
+    {
+        
+    }
 }
