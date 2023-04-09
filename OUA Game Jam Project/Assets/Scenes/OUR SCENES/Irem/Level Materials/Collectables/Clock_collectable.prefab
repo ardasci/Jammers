@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8150778593642334919}
   - component: {fileID: 810414563434114795}
   - component: {fileID: 2855801354390015128}
-  - component: {fileID: 8383386411129896478}
+  - component: {fileID: 5075826562420225154}
   m_Layer: 0
   m_Name: Clock_collectable
   m_TagString: Untagged
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945a8a9bc0e91846bdba31718642977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &8383386411129896478
-SphereCollider:
+--- !u!136 &5075826562420225154
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -325,9 +325,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.49969542
-  m_Center: {x: 0, y: 0, z: 0.073564984}
+  m_Height: 0.99939084
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 1.2818044}
 --- !u!1 &8150778593640338441
 GameObject:
   m_ObjectHideFlags: 0

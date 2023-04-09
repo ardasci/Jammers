@@ -25,9 +25,10 @@ namespace Time
             CountdownCalculator();
         }
 
-        public void SandGlassImgRotator()
+        public void SandGlassImgScaler()
         {
-            sandGlass.DOLocalRotate(new Vector3(0, 0, 360), 2f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
+            //sandGlass.DOLocalRotate(new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
+            sandGlass.DOPunchScale(Vector3.one * .2f, 1f, 10, 1f);
         }
 
         private void CountdownCalculator()
@@ -70,7 +71,7 @@ namespace Time
 
         public void DestroyClock(Transform trans, GameObject gameObj)
         {
-            trans.DOScale(0f, .3f).SetEase(Ease.InOutBack).OnComplete(() =>
+            trans.DOScale(0f, .2f).SetEase(Ease.InOutBack).OnComplete(() =>
                 Destroy(gameObj)
                 );
         }
