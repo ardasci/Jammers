@@ -21,11 +21,11 @@ namespace Time
 
         private void Update()
         {
-            SandGlassImgRotator();
+            
             CountdownCalculator();
         }
 
-        private void SandGlassImgRotator()
+        public void SandGlassImgRotator()
         {
             sandGlass.DOLocalRotate(new Vector3(0, 0, 360), 2f, RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
         }

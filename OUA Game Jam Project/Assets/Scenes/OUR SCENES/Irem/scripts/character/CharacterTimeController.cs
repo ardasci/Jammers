@@ -19,6 +19,7 @@ namespace Character
         {
             if (other.GetComponent<TimeUpgrader>())
             {
+                _timer.SandGlassImgRotator();
                 _timer.CountdownIncreaser();
                 _timer.DestroyClock(other.transform, other.gameObject);
             }
