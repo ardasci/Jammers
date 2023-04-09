@@ -6,7 +6,7 @@ namespace Time
 {
     public class Timer : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI timeText;
+        [SerializeField] public TextMeshProUGUI timeText;
         [SerializeField] private Transform sandGlass;
         [SerializeField] private float _speed = .1f, _height = .5f;
         [SerializeField] private bool isGameStarted;
@@ -21,7 +21,6 @@ namespace Time
 
         private void Update()
         {
-            
             CountdownCalculator();
         }
 
@@ -52,14 +51,14 @@ namespace Time
             }
         }
 
-        public void CountdownIncreaser()
+        public void CountdownController(Color _color, float value)
         {
-            TextColorUpdater(timeText, Color.green);
-            countdown += 5f;
+            TextColorUpdater(timeText, _color);
+            countdown += value;
             //timeText.gameObject.transform.DOScale(Vector3.one * 1.5f, 1f).SetLoops(2, LoopType.Yoyo);
         }
 
-        private void TextColorUpdater(TextMeshProUGUI _text, Color _color)
+        public void TextColorUpdater(TextMeshProUGUI _text, Color _color)
         {
             _text.DOColor(_color, 1f);
         }

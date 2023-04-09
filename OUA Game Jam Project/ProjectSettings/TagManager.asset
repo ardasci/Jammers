@@ -11,6 +11,9 @@ TagManager:
   - Update
   - Collectable
   - Obstacle
+  - Public
+  - Private
+  - Dance
   layers:
   - Default
   - TransparentFX

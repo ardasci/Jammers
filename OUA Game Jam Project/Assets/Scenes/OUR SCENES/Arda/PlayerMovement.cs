@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     Joystick joystick;
 
-
     public float speed = 8f; // hareket hýzý
     public float rotationSpeed = 100f; // rotasyon hýzý
     public Transform rotationObject; // rotation object
@@ -20,11 +19,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rotationObject = GetComponent<Transform>();
-    }
-
-    private void FixedUpdate()
-    {
-
     }
 
     private void Update()

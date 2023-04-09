@@ -9,12 +9,17 @@ namespace Character
     public class CharacterTimeController : MonoBehaviour
     {
         private Timer _timer;
-        private TimeUpgrader _timeUpgrader;
+        private Animator animator;
+        private PlayerMovement playerMovement;
+
+        private const string _dance = "Dance";
+        private const string _isDancing = "isDancing";
 
         private void Start()
         {
             _timer = FindObjectOfType<Timer>();
-            _timeUpgrader = FindObjectOfType<TimeUpgrader>();
+            animator = GetComponent<Animator>();
+            playerMovement = GetComponent<PlayerMovement>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -22,13 +27,19 @@ namespace Character
             if (other.GetComponent<TimeUpgrader>())
             {
                 _timer.SandGlassImgScaler();
-                _timer.CountdownIncreaser();
+                _timer.CountdownController(Color.green, 5f);
             }
 
             if (other.GetComponent<ObstacleController>())
             {
                 // set fall anim
                 // gameover
+            }
+
+            if (other.CompareTag(_dance))
+            {
+                animator.SetTrigger(_isDancing);
+                playerMovement.speed = 0.01f;
             }
         }
 
