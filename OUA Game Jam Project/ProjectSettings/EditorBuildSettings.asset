@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OUR SCENES/Emircan/EntryScene.unity
     guid: 2deafda1754e0de4481ec36f57c211d0
   - enabled: 1
+    path: Assets/Scenes/OUR SCENES/Irem/IremScene.unity
+    guid: 0623616a22060d24c82564507511ee07
+  - enabled: 1
     path: Assets/Scenes/OUR SCENES/Selinay/LevelScene/SelinayScene.unity
     guid: dd668c274dc5dc94d8b766d2c5b1fff6
   - enabled: 1
