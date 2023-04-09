@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Joystick joystick;
+
+
     public float speed = 8f; // hareket hýzý
     public float rotationSpeed = 100f; // rotasyon hýzý
     public Transform rotationObject; // rotation object
@@ -13,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rotationObject = GetComponent<Transform>();
@@ -25,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal"); // yatay inputu al
+        //PlayerRb.velocity = new Vector2(joystick.Horizontal , PlayerRb.velocity.y); //yürüme. sa? -> axis > 0 
         rb.velocity = transform.forward * speed;
+
+        float horizontalInput = joystick.Horizontal * speed; // yatay inputu al
         float rotation = horizontalInput * rotationSpeed * Time.deltaTime; // rotasyon açýsýný hesapla
         rotationObject.Rotate(0f, rotation / 1.25f, 0f); // rotationObject'in rotasyonunu güncelle
 
