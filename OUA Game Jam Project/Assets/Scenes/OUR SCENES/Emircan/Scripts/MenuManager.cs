@@ -69,5 +69,10 @@ public class MenuManager : MonoBehaviour
             MusicManager.instance.MusicPlay(false);
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
 
