@@ -6,10 +6,11 @@ using UnityEngine;
 public class Collector : MonoBehaviour
 {
     private Stash _stash;
-
+    private AudioSource audioSource;
     private void Awake()
     {
         _stash = GetComponent<Stash>();
+        audioSource = GetComponent<AudioSource>();  
     }
 
 
@@ -17,6 +18,7 @@ public class Collector : MonoBehaviour
     {
         if (other.CompareTag("Collectable"))
         {
+            audioSource.Play();
             if (other.TryGetComponent(out Collectable collected))
             {
                 _stash.AddStash(collected);

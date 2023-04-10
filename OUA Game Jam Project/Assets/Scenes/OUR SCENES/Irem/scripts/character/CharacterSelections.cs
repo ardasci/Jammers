@@ -41,6 +41,7 @@ namespace Character
                 if (other.CompareTag(_groceryCart))
                 {
                     cart.SetActive(true);
+                    cart.GetComponent<BoxCollider>().enabled = false;
                     other.gameObject.SetActive(false);
                 }
                 else if (other.CompareTag(_suprise))        // TO-DO: plane, skateboard, donkey etc.

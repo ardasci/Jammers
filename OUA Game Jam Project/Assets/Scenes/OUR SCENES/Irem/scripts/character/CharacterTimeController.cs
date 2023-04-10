@@ -2,6 +2,7 @@ using Time;
 using Collectables;
 using Obstacles;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Character
 {
@@ -40,6 +41,7 @@ namespace Character
             {
                 animator.SetTrigger(_isDancing);
                 playerMovement.speed = 0.01f;
+                Invoke("GameFinish",3f);
             }
         }
 
@@ -50,6 +52,12 @@ namespace Character
                 _timer.SetDefaultTextColor();
                 _timer.DestroyClock(other.transform, other.gameObject);
             }
+        }
+
+
+        void GameFinish() 
+        {
+            SceneManager.LoadScene(2);
         }
     }
 }
