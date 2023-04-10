@@ -1,4 +1,4 @@
-# Jammers
+# Dream Academy
 A fantastic game of jam
 
 
